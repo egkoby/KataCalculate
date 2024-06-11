@@ -39,8 +39,7 @@ public class KataCalculate {
             }
 
             System.out.println("Результат: " + roman[result-1]);
-            for (int i = 0; i < roman.length; i++) {
-            }
+            
         } else if (!v1 && !v2) {
             int num1 = Integer.parseInt(symbols[0]);
             int num2 = Integer.parseInt(symbols[2]);
