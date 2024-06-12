@@ -1,7 +1,7 @@
 import java.util.Arrays;
-import java.util.Scanner;
 
-public class KataCalculate {
+public class Main {
+
     static String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
             "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
             "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX",
@@ -13,12 +13,9 @@ public class KataCalculate {
             "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC",
             "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C"};
 
-    public static void main(String[] args) throws Exception {
-        int result = 0;
-        System.out.println("Введите два числа и оператор.");
-        Scanner input = new Scanner(System.in);
-        String calculateString = input.nextLine();
-        String[] symbols = calculateString.split(" ");
+    public static String calc(String input) throws Exception {
+        Integer result;
+        String[] symbols = input.split(" ");
         String value1 = symbols[0];
         String value2 = symbols[2];
         String operand = symbols[1];
@@ -29,25 +26,22 @@ public class KataCalculate {
         }
 
         if (v1 && v2) {
-            for (int i = 0; i < roman.length; i++) {
                 int num1 = Arrays.asList(roman).indexOf(value1) + 1;
                 int num2 = Arrays.asList(roman).indexOf(value2) + 1;
                 result = calc(num1, num2, operand);
-            }
-            if (result <= 0) {
-                throw new Exception("Ошибка, результатом работы калькулятора с римскими числами могут быть только положительные числа.");
-            }
+                if (result <= 0) {
+                    throw new Exception("Ошибка, результатом работы калькулятора с римскими числами могут быть положительные числа отличные от ноля.");
+                }
 
-            System.out.println("Результат: " + roman[result-1]);
-            
+            return roman[result-1];
         } else if (!v1 && !v2) {
             int num1 = Integer.parseInt(symbols[0]);
             int num2 = Integer.parseInt(symbols[2]);
             result = calc(num1, num2, operand);
-            System.out.println("Результат: " + result);
-        } else throw new Exception("Ошибка, используйте либо арабские, либо римские цифры одновременно.");
-
-
+            return result.toString();
+        } else {
+            throw new Exception("Ошибка, используйте либо арабские, либо римские цифры одновременно.");
+        }
     }
 
     private static int calc(int num1, int num2, String operand) throws Exception {
@@ -72,7 +66,9 @@ public class KataCalculate {
                     throw new Exception("Ошибка, введите корректный оператор (+, -, *, /).");
             }
 
-        } else throw new Exception("Ошибка, введите числа от 1 до 10");
+        } else  {
+            throw new Exception("Ошибка, введите числа от 1 до 10");
+        }
         return result;
     }
 
@@ -86,5 +82,3 @@ public class KataCalculate {
     }
 
 }
-
-
