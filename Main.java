@@ -1,6 +1,19 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args){
+        System.out.println("Введите два числа и оператор:");
+        Scanner input = new Scanner(System.in);
+        String userInput = input.nextLine();
+
+        try {
+            String result = calc(userInput);
+            System.out.println("Результат: " + result);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     static String[] roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
             "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
