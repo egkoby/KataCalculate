@@ -26,12 +26,12 @@ public class Main {
         }
 
         if (v1 && v2) {
-                int num1 = Arrays.asList(roman).indexOf(value1) + 1;
-                int num2 = Arrays.asList(roman).indexOf(value2) + 1;
-                result = calc(num1, num2, operand);
-                if (result <= 0) {
-                    throw new Exception("Ошибка, результатом работы калькулятора с римскими числами могут быть положительные числа отличные от ноля.");
-                }
+            int num1 = Arrays.asList(roman).indexOf(value1) + 1;
+            int num2 = Arrays.asList(roman).indexOf(value2) + 1;
+            result = calc(num1, num2, operand);
+            if (result <= 0) {
+                throw new Exception("Ошибка, результатом работы калькулятора с римскими числами могут быть положительные числа отличные от ноля.");
+            }
 
             return roman[result-1];
         } else if (!v1 && !v2) {
@@ -81,4 +81,8 @@ public class Main {
         return false;
     }
 
+    static void main(String[] args) throws Exception {
+        System.out.println(calc("V + III"));
+        System.out.println(calc("10 / 0"));
+    }
 }
