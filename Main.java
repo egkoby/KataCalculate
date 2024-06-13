@@ -80,9 +80,4 @@ public class Main {
         }
         return false;
     }
-
-    static void main(String[] args) throws Exception {
-        System.out.println(calc("V + III"));
-        System.out.println(calc("10 / 0"));
-    }
 }
